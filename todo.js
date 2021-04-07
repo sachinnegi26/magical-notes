@@ -65,29 +65,20 @@ function deleteNote(index) {
     showNotes();
 }
 
+ let search=document.getElementById("searchTxt");
+ search.addEventListener("input", function(){
+     let inputvalue=search.value.toLowerCase();
+     let notecard=document.getElementsByClassName("noteCard");
 
-// let search = document.getElementById('searchTxt');
-// search.addEventListener("input", function () {
+     Array.from(notecard).forEach(function(element){
 
-//     let inputVal = search.value.toLowerCase();
-//     // console.log('Input event fired!', inputVal);
-//     let noteCards = document.getElementsByClassName('noteCard');
-//     Array.from(noteCards).forEach(function (element) {
-//         let cardTxt = element.getElementsByTagName("p")[0].innerText;
-//         if (cardTxt.includes(inputVal)) {
-//             element.style.display = "block";
-//         }
-//         else {
-//             element.style.display = "none";
-//         }
-//         // console.log(cardTxt);
-//     })
-// })
+         let cardTxt=element.getElementsByTagName("h5")[0].innerText;
+         if(cardTxt.includes(inputvalue)){
+             element.style.display="block";
+         }else{
+            element.style.display="none";
+         }
 
-/*
-Further Features:
-1. Add Title
-2. Mark a note as Important
-3. Separate notes by user
-4. Sync and host to web server
-*/
+     })
+
+ })
